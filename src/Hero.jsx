@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Square from './Square'
 import { patterns } from './Scripts/patterns'
+import Swal from 'sweetalert2'
 
 const Hero = () => {
 
@@ -20,8 +21,14 @@ const Hero = () => {
   
       useEffect(() => {
           if(result.state != "none")
-        alert(`Game Finished! Winning Player: ${result.winner}`)
-        reset();
+        Swal.fire({
+            icon: 'success',
+            title: `${result.winner} Won`,
+            text: result.state == "Won" ? 'Game Finished! Want to retry?' : 'Want to retry?',
+            confirmButtonText: 'Yes',
+            confirmButtonColor: 'black'
+          })
+          .then(() =>reset())
       }, [result])
         
 
@@ -71,6 +78,7 @@ const Hero = () => {
     
   return (
     <div className='App'>
+        <h1><u>Tic Tac Toe</u></h1>
         <div className="board">
             <div className="row">
                 <Square val={board[0]} chooseSquare={() => chooseSquare(0)}/>
@@ -88,6 +96,7 @@ const Hero = () => {
                 <Square val={board[8]} chooseSquare={() => chooseSquare(8)}/>
             </div>         
         </div>
+        <p>💻<b>BUSAYOCODES</b></p>
     </div>
   )
 }
