@@ -1,7 +1,6 @@
 import React from 'react'
-import './index.css'
 
-const Square = ({val, chooseSquare}) => {
+const Square = ({ val, chooseSquare }) => {
   return (
     <div className='square' onClick={chooseSquare}>
         {val}
