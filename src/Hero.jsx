@@ -22,9 +22,9 @@ const Hero = () => {
       useEffect(() => {
           if(result.state != "none")
         Swal.fire({
-            icon: 'success',
-            title: `${result.winner} Won`,
-            text: result.state == "Won" ? 'Game Finished! Want to retry?' : 'Want to retry?',
+            icon: result.state == "Won" ? 'success' : 'question',
+            title: result.state == "Won" ? `${result.winner} Won` : "Tie",
+            text: result.state == "Won" ? 'Game Finished! Want to retry?' : `${result.winner} Won. Want to retry?`,
             confirmButtonText: 'Yes',
             confirmButtonColor: 'black'
           })
